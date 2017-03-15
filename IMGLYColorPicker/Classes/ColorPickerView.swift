@@ -34,7 +34,7 @@ import UIKit
                 deviceDependentHue: CGFloat(huePickerView.pickedHue.value),
                 saturation: CGFloat(saturationBrightnessPickerView.pickedSaturation.value),
                 brightness: CGFloat(saturationBrightnessPickerView.pickedBrightness.value),
-                alpha: alphaPickerView.pickedAlpha
+                alpha: 1
             )
         }
 
@@ -53,8 +53,8 @@ import UIKit
 
                 var alpha: CGFloat = 0
                 newValue.getWhite(nil, alpha: &alpha)
-                alphaPickerView.displayedColor = newValue
-                alphaPickerView.pickedAlpha = alpha
+//                alphaPickerView.displayedColor = newValue
+//                alphaPickerView.pickedAlpha = alpha
 
                 updateMarkersToMatchColor()
             }
@@ -63,7 +63,7 @@ import UIKit
 
     private let huePickerView = HuePickerView()
     private let saturationBrightnessPickerView = SaturationBrightnessPickerView()
-    private let alphaPickerView = AlphaPickerView()
+//    private let alphaPickerView = AlphaPickerView()
 
     // MARK: - Initializers
 
@@ -82,7 +82,7 @@ import UIKit
     private func commonInit() {
         configureHuePickerView()
         configureSaturationBrightnessPickerView()
-        configureAlphaPickerView()
+//        configureAlphaPickerView()
         configureConstraints()
     }
 
@@ -100,25 +100,25 @@ import UIKit
         addSubview(saturationBrightnessPickerView)
     }
 
-    private func configureAlphaPickerView() {
-        alphaPickerView.translatesAutoresizingMaskIntoConstraints = false
-        alphaPickerView.addTarget(self, action: #selector(alphaPickerChanged(_:)), for: .valueChanged)
-        addSubview(alphaPickerView)
-    }
+//    private func configureAlphaPickerView() {
+//        alphaPickerView.translatesAutoresizingMaskIntoConstraints = false
+//        alphaPickerView.addTarget(self, action: #selector(alphaPickerChanged(_:)), for: .valueChanged)
+//        addSubview(alphaPickerView)
+//    }
 
     private func configureConstraints() {
         let views = [
             "saturationBrightnessPickerView": saturationBrightnessPickerView,
             "huePickerView": huePickerView,
-            "alphaPickerView": alphaPickerView,
+//            "alphaPickerView": alphaPickerView,
         ]
 
         var constraints = [NSLayoutConstraint]()
 
         constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[saturationBrightnessPickerView]-20-|", options: [], metrics: nil, views: views))
         constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[huePickerView(==saturationBrightnessPickerView)]-20-|", options: [], metrics: nil, views: views))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[alphaPickerView(==saturationBrightnessPickerView)]-20-|", options: [], metrics: nil, views: views))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "|-12-[huePickerView(20)]-12-[saturationBrightnessPickerView]-12-[alphaPickerView(20)]-12-|", options: [], metrics: nil, views: views))
+//        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[alphaPickerView(==saturationBrightnessPickerView)]-20-|", options: [], metrics: nil, views: views))
+        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "|-20-[huePickerView(45)]-15-[saturationBrightnessPickerView]-20-|", options: [], metrics: nil, views: views))
 
         NSLayoutConstraint.activate(constraints)
     }
@@ -135,7 +135,7 @@ import UIKit
     @objc private func huePickerChanged(_ huePickerView: HuePickerView) {
         let color = self.color
         saturationBrightnessPickerView.displayedHue = color.hsb.hue
-        alphaPickerView.displayedColor = color
+//        alphaPickerView.displayedColor = color
         sendActions(for: .valueChanged)
     }
 
@@ -144,7 +144,7 @@ import UIKit
     }
 
     @objc private func saturationBrightnessPickerChanged(_ saturationBrightnessPicker: SaturationBrightnessPickerView) {
-        alphaPickerView.displayedColor = color
+//        alphaPickerView.displayedColor = color
         sendActions(for: .valueChanged)
     }
 
@@ -153,6 +153,6 @@ import UIKit
     private func updateMarkersToMatchColor() {
         huePickerView.updateMarkerPosition()
         saturationBrightnessPickerView.updateMarkerPosition()
-        alphaPickerView.updateMarkerPosition()
+//        alphaPickerView.updateMarkerPosition()
     }
 }
