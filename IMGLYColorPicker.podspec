@@ -16,7 +16,7 @@ A user can select a color by hue, saturation, brightness and alpha.
   s.source           = { :git => 'https://github.com/imgly/IMGLYColorPicker.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/photoeditorsdk'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'IMGLYColorPicker/Classes/**/*'
 
