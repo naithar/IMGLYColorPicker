@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'IMGLYColorPicker'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'A color picker control for iOS with support for wide colors written in Swift.'
   s.description      = <<-DESC
 IMGLYColorPicker is a color picker control for iOS that has been extracted from
