@@ -40,7 +40,10 @@ class PickerView: UIControl {
 
     private func commonInit() {
         markerView.backgroundColor = .white
+        markerView.layer.borderWidth = 0.5
+        markerView.layer.borderColor = UIColor.lightGray.cgColor
         markerView.layer.shadowColor = UIColor.black.cgColor
+        markerView.layer.cornerRadius = 2
         markerView.layer.shadowOffset = CGSize(width: 0, height: 2)
         markerView.layer.shadowOpacity = 0.25
         markerView.layer.shadowRadius = 2
